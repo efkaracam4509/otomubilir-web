@@ -25,12 +25,11 @@
             overflow-x: hidden;
         }
 
-        /* Arka planın daha iyi görünmesi için genel karartmayı azalttım */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.1); /* Şeffaflık arttı */
+            background: rgba(255, 255, 255, 0.1);
             z-index: -1;
         }
         
@@ -39,8 +38,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            background: rgba(255, 255, 255, 0.3); /* Daha şeffaf */
-            backdrop-filter: blur(25px); /* Daha yüksek blur */
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(25px);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -49,12 +48,11 @@
         
         .nav-logo { height: 35px; }
         
-        /* Hero Section - Glassmorphism Efekti */
         .hero { 
             padding: 80px 5% 60px; 
             text-align: center; 
-            background: rgba(255, 255, 255, 0.15); /* Şeffaflık çok arttı */
-            backdrop-filter: blur(40px); /* Blur derinleşti */
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(40px);
             margin: 40px 8%;
             border-radius: 50px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.1);
@@ -67,7 +65,6 @@
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
         }
 
-        /* HAVALI ÇİZGİ */
         .cool-line {
             height: 3px;
             width: 120px;
@@ -120,7 +117,7 @@
             gap: 30px;
         }
         .feature-card { 
-            background: rgba(255, 255, 255, 0.2); /* Çok şeffaf */
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(30px);
             padding: 40px; 
             border-radius: 35px; 
@@ -142,23 +139,52 @@
         .footer-logo { height: 35px; filter: brightness(0) invert(1); margin-bottom: 25px; opacity: 0.8; }
         footer p { opacity: 0.6; font-size: 0.85rem; margin-bottom: 30px; }
         
-        .legal-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .legal-links a { 
-            color: white; 
-            opacity: 0.7; 
-            text-decoration: none; 
-            font-size: 0.8rem;
-            padding: 10px 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px;
-            transition: 0.3s;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
         }
-        .legal-links a:hover { opacity: 1; background: var(--primary); border-color: var(--primary); }
+
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 12px 22px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 14px;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.05);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .footer-links .icon {
+            font-size: 1rem;
+        }
 
         @media (max-width: 768px) { 
             .hero { margin: 15px; padding: 40px 20px; border-radius: 30px; }
             .hero-logo { max-width: 200px; }
             .hero .slogan { font-size: 1.1rem; letter-spacing: 2px; }
+        }
+
+        @media (max-width: 600px) {
+            .footer-links a {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -172,14 +198,13 @@
     <section class="hero">
         <img src="logo.png" alt="otomubilir logo" class="hero-logo">
         
-        <!-- HAVALI ÇİZGİ BURADA -->
         <div class="cool-line"></div>
         
         <div class="slogan">EN İYİSİNİ KULLANAN BİLİR</div>
         <p>Aracınızla ilgili her soruna kullanıcıdan çözüm, her marka ve modele özel topluluk Otomubilir'de.</p>
         
         <div class="btn-group" id="indir">
-            <a href="#" class="btn btn-dark">Google Play (Yakında)</a>
+            <a href="#" class="btn btn-dark">Play Store (Yakında)</a>
             <a href="#" class="btn btn-outline">App Store (Yakında)</a>
         </div>
     </section>
@@ -189,7 +214,7 @@
             <h3>🛠 TEKNİK YARDIM</h3>
             <p>Aracınızdaki sorunu paylaşın, sadece o model-markanın kullanıcılarından gerçek ve deneyimlenmiş çözümler alın.</p>
         </div>
-        <div class="feature-card">
+                <div class="feature-card">
             <h3>🚗 TOPLULUKLAR</h3>
             <p>Aynı marka-model araç sahiplerini bir araya getiriyoruz. Kendi aracınızın topluluğuna veya hobi gruplarına katılın, modifiyeden bakıma her şeyi konuşun.</p>
         </div>
@@ -201,12 +226,21 @@
 
     <footer>
         <img src="logo.png" alt="otomubilir" class="footer-logo">
-        <p>© 2026 otomubilir. Tüm Hakları Saklıdır. <br>Türkiye</p>
-        <div class="legal-links">
-            <a href="kullanim-kosullari.html">Kullanım Koşulları</a>
-            <a href="gizlilik-politikasi.html">Gizlilik Politikası</a>
-            <a href="kvkk.html">Aydınlatma Metni</a>
+        
+        <div class="footer-links" style="display:flex;flex-direction:column;align-items:center;gap:20px;">
+            <div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;">
+                <a href="buraya face url yaz"></span>facebook\otomubilir</a>
+                <a href="buraya insta url yaz"></span>instagram\otomubilir</a>
+                <a href="buraya x url yaz"></span>x\otomubilir</a>
+            </div>
+            <div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;">
+                <a href="mailto:bilgi@otomubilir.com"></span> e‑posta: bilgi@otomubilir.com</a>
+                <a href="yasal-metinler.html"></span>Yasal Metinler</a>
+            </div>
         </div>
+
+
+	<p>© 2026 otomubilir. Tüm Hakları Saklıdır. <br>Türkiye</p>
     </footer>
 
 </body>
